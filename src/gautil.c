@@ -72,6 +72,10 @@ gaint past,cnt;
   while (1) {
     *cmd = getchar();
     if (*cmd == EOF) return (-1);
+#ifdef __CYGWIN32__
+    if (*cmd == '\r')
+      continue;
+#endif
     if (*cmd == '\n') {
       cmd++;
       *cmd = '\0';
