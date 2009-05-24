@@ -1,0 +1,163 @@
+<!--Copyright (C) 1988-2005 by the Institute of Global Environment and Society (IGES). See file COPYRIGHT for more information.-->
+
+<html>
+<head>
+<title>GrADS Image Output</title>
+</head>
+<body bgcolor="e0f0ff" text="#000000">
+
+<h2><b>Producing Hardcopy and Image Output from GrADS</b></h2>
+
+<p>
+<h3>Generating Image Files from GrADS</h3>
+
+There are two different GrADS commands that will convert the
+contents of the graphics window into an image file. The differences
+between them are the image formats they support and the way they are
+implemented in GrADS. <a href="gradcomdprintim.html"><code>printim</code></a>
+is newer and will only work with GrADS version 1.8. 
+
+<p>
+<b><i>wi</i></b>
+<p>
+The <a href="gradcomdwi.html"><code>wi</code></a> command dumps an
+exact copy of the GrADS graphics window directly to an image file. It
+supports a large variety of image formats: GIF, BMP, CGM, EPX, FAX,
+ICO, JPEG, PCS, HDF, and many others. <a
+href="gradcomdwi.html"><code>wi</code></a> requires an active
+connection to an X-server -- it will not work in batch mode. Consult
+the <a href="gradcomdwi.html">reference page</a> for details.
+
+<p>
+<b><i>printim</i></b>
+<p>
+The <a href="gradcomdprintim.html"><code>printim</code></a> command
+produces a PNG or GIF formatted image file based on the current
+contents of the GrADS metabuffer, which is the stuff displayed in the
+graphics window, minus any widgets. <a
+href="gradcomdprintim.html"><code>printim</code></a> will work in
+batch mode. Consult the <a href="gradcomdprintim.html">reference
+page</a> for details.
+
+
+<p>
+<h3>Generating GrADS metafiles</h3>
+
+<p>
+<b><i>1. Set-up the GrADS metafile</i></b>
+<p>
+The first step in creating hardcopy image output is to enter the command:
+
+<p>
+<dd>
+<code><a href="gradcomdenableprint.html">enable print</a> <i>filename</i></code>
+
+<p>
+This opens the output file <code><i>filename</i></code> and enables
+GrADS to direct image information to that file. Any existing contents
+of <code><i>filename</i></code>will be lost.
+
+<p>
+<b><i>2. Display the image</i></b>
+<p>
+The next step is to display the graphic that you want to print. When
+you have finished, enter the command:
+
+<p>
+<dd><code><a href="gradcomdprint.html">print</a></code>
+
+<p>
+GrADS copies the vector instructions used to create the current
+display into the output file in a GrADS metacode format.
+
+<p>
+<b><i>3. Close the GrADS metafile</i></b>
+<p>
+There are three way to close the output file:
+<p>
+<dd><a href="gradcomddisableprint.html"><code>disable print</code></a><br>
+<dd><a href="gradcomdreinit.html"><code>reinit</code></a><br>
+<dd><a href="gradcomdquit.html"><code>quit</code></a><br>
+
+<p>
+<h3>Converting GrADS Metafiles to Postscript</h3>
+
+<p>
+GrADS metacode files may be translated into postscript using the GrADS
+external utilities <a href="gradutilgxps.html"><code>gxps</code></a> and <a
+href="gradutilgxeps.html"><code>gxeps</code></a>. Both utilities will
+prompt for input and output filenames, unless they
+are provided on the command line. The input filename should be the
+file created by the <a href="gradcomdenableprint.html"> <code>enable
+print</code></a> command. The output filename can be anything, but a
+".ps" extension is conventional. Any existing file with this name will
+be overwritten. Once the output file is created, you may print it
+using UNIX print commands. Please consult the references pages for 
+<a href="gradutilgxps.html"><code>gxps</code></a> and 
+<a href="gradutilgxeps.html"><code>gxeps</code></a> to see 
+all the command line arguments and options.
+
+<p>
+<a href="gradutilgxps.html"><code>gxps</code></a> and <a
+href="gradutilgxeps.html"><code>gxeps</code></a> are not
+GrADS commands. They must be executed from the UNIX command line, or
+preceded by a <a href="gradcomdshell.html"><code>!</code></a> and
+executed as a shell command from the GrADS command line.
+
+<p>
+<h3>Displaying GrADS Metafiles</h3>
+
+<p>
+GrADS metacode files may be displayed using the GrADS external utility
+<a href="gradutilgxtran.html"><code>gxtran</code></a>. The input
+filename should be the file created by the <a
+href="gradcomdenableprint.html"> <code>enable print</code></a>
+command. If the GrADS metafile contains more than one image, <a
+href="gradutilgxtran.html"><code>gxtran</code></a> will animate them.
+The animation can be automatic or controlled by the user with carriage
+returns.  Please consult the <a
+href="gradutilgxtran.html"></code>gxtran</code> reference page</a> to
+see all the command line arguments and options.
+
+<p>
+<h3>Displaying GrADS Metafiles with Windows 95/NT</h3>
+
+<p>
+The GrADS metafile Viewer (GV) allows you to view and manipulate GrADS
+graphics output files using Windows 95/NT. There are two files to download:
+<ul>
+<li> <a href="ftp://grads.iges.org/grads/gv/gv32.exe">gv32.exe</a>
+<li> <a href="ftp://grads.iges.org/grads/gv/gv32.hlp">gv32.hlp</a>
+</ul>
+<p>
+To open the metafile simply double click on a file listed in the File
+Manager or Explorer, drag and drop the file onto GV, or use the
+standard <i>Open</i> dialog box. GV assumes that default extension of GRADS
+metafiles is GMF. If your file includes more than one picture you can
+browse through pages using the keyboard keys (PageDown and PageUp) or the
+toolbar buttons.
+<p>
+Use the <i>View</i> commands and the <i>View/Options</i>
+dialog box to customize the image -- display it as black-and-white or
+color, change the line thickness, or clip and enlarge any part of the
+image.  Use the right mouse button to access the most commonly used
+features.
+<p>
+There are two ways to save separate pages of a GRADS metafile as
+Windows Metafile (WMF): 1) use the <i>File/Save Page As</i>
+command, or 2) use the <i>Edit/Copy</i> command to copy the
+current page to the Windows Clipboard and then <i>Edit/Paste</i>
+it in your favorite Windows application that handles Windows
+Metafiles.
+<p>
+Use <i>File/Print</i> command to print a current document <b>to
+any printer</b> (you do not need a Postscript printer).  Use
+<i>File/Print Preview</i> to display the active metafile as it
+would appear when printed.
+<p>
+
+
+</body>
+</html>
+
+

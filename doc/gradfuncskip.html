@@ -1,0 +1,84 @@
+<!--Copyright (C) 1988-2005 by the Institute of Global Environment and Society (IGES). See file COPYRIGHT for more information.-->
+
+<html>
+<head>
+<title>GrADS Command: skip</title>
+</head>
+<body bgcolor="e0f0ff" text="#000000">
+
+<h2><b>skip()</b></h2><p>
+
+<code>skip (<i>expr, skipx, skipy</i>)</code>
+
+<p> 
+Sets alternating values of <code><i>expr</i></code> to the missing
+data value. This function is used while displaying wind
+<code>arrows</code> or <code>barbs</code> to thin the number of arrows or
+barbs. 
+
+<p>
+<ul>
+<code><i>expr</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>A valid grid expression <br>
+<code><i>skipx</i>&nbsp;&nbsp;&nbsp;&nbsp;</code>Skip factor in the X direction <br>
+<code><i>skipy</i>&nbsp;&nbsp;&nbsp;&nbsp;</code>Skip factor in the Y direction <br>
+</ul>
+<p>
+<H3>Usage Notes</H3>
+<P>
+<ol>
+<li>It is not necessary to use the <code>skip</code> function on
+both the U and V wind components; it is sufficient to populate only one
+component with missing data values to suppress the plotting of the wind
+<code>arrow</code> or <code>barb</code>.
+</ol>
+<p>
+<h3>Examples </h3>
+
+<ol>
+<li>To display every other grid point in both the X and Y direction: 
+<p>
+<ul><code>d skip(u,2,2);v</code></ul>
+<p>
+<li>To display every grid point in the Y direction, but every 5th grid
+point in the X direction:
+<p> 
+<ul><code>d skip(u,5,1);v</code></ul>
+<p>
+<li>This example script "d_uv.gs" written by Wesley Ebisuzaki
+automatically sets the skip factor based on the plot dimensions.
+<p>
+<pre>
+*
+* This function does a d skip(ugrd,n);v
+* where n is automatically set to an appropriate value
+*
+* usage: d_uv ugrd vgrd 
+*
+* v1.1 w. ebisuzaki
+* v1.2 4/6/98 revised empirical formula for skip
+*
+function duv(arg)
+u = subwrd(arg,1)
+v = subwrd(arg,2)
+
+* get lat/lon info
+'query dims'
+lons = sublin(result,2)
+lats = sublin(result,3)
+dx = subwrd(lons,13) - subwrd(lons,11)
+dy = subwrd(lats,13) - subwrd(lats,11)
+
+* Determine skip factor 
+dn = dx
+if (dy > dx) ; dn = dy ; endif
+skip = dn / 50 + 0.5
+if (skip < 1) ; skip=1 ; endif
+
+* Display the plot
+'d skip('u','skip');'v
+</pre>
+</ol> 
+
+</body>
+</html>
+

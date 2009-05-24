@@ -1,0 +1,82 @@
+<!--Copyright (C) 1988-2005 by the Institute of Global Environment and Society (IGES). See file COPYRIGHT for more information.-->
+
+<html>
+<head>
+<title>GrADS Function: gr2stn</title>
+</head>
+<body text="#000000" bgcolor="e0f0ff">
+
+<h2><b>gr2stn()</b></h2><p> 
+
+<p>
+This function is a grid-to-station interpolator. It creates "station"
+data by taking a 1-dimensional sample from a gridded data set and
+interpolating to a given location. That location may be provided by
+specifying a longitude and a latitude, or by providing a station
+expression.
+
+<p>
+<ul>
+<code>gr2stn(<i>grid_expr, lon, lat &lt;,-a&gt;</i>)</code><br>
+or<br>
+<code>gr2stn(<i>grid_expr, stn_expr &lt;,-a&gt;</i>)</code><br>
+</ul>
+
+<p>
+where: 
+
+<p>
+<ul>
+<code><i>grid_expr</i></code> is a GrADS expression
+that gives a grid result. The interpolation will be done on this
+data.
+<p> 
+<code><i>stn_expr</i></code> is a GrADS
+expression that gives a station data result. The interpolation will be
+done to the station <i>location</i>, the value of the station data is
+not used.
+<p> 
+<code><i>lon,lat</i></code> may be used instead of
+<code><i>stn_expr</i></code> to specify the location to which the
+gridded data will be interpolated.
+</ul>
+
+<p>
+<H3>Usage Notes</H3><P>
+<ol>
+<li>The interpolation will work when only one dimension is varying (either Z or T).
+<p>
+<li>The result of the function is station data. The interpolation is done
+bi-linearly within the grid space. No weighting is done to account for
+real-world coordinate systems.
+<p>
+<li>Use the -a option to return a value even if the location
+is not completely surrounded by grid points. 
+<p>
+<li>See the section of the User's Guide on <a
+href="usingstationdata.html#xsection">Arbitrary Cross Sections</a> for more
+information on applications of <code>gr2stn</code>. 
+
+<h3>Examples</h3><p> 
+
+<ol>
+<li>To examine the difference between an analysis (ie, gridded data) and
+the original observations, one could: <p>
+
+<dd><code>d t.3-gr2stn(t.1,t.3)</code><p>
+
+where file 1 is gridded data, and file 3 is station data. The result would
+displayas differences at the station locations. <p>
+
+<li>If one wanted to display the difference calculated in Example 1 as a
+contour field, one can use the <a
+href="gradfuncoacres.html"><code>oacres</code></a> function to do a quick
+analysis of the station values: <p>
+
+<dd><code>d oacres(t.1,t.3-gr2stn(t.1,t.3)) </code>
+</ol>
+
+</body>
+</html>
+
+

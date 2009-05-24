@@ -1,0 +1,55 @@
+<!--Copyright (C) 1988-2005 by the Institute of Global Environment and Society (IGES). See file COPYRIGHT for more information.-->
+
+<h1>Expressions</h1>
+
+A GrADS expression consists of operators, operands, and
+parentheses.  Parentheses are used the same as in FORTRAN to
+control the order of operation.<p>
+
+Operators are:<p>
+
+<ul>
+<code>+</code>&nbsp;&nbsp;&nbsp; Addition <br>
+<code>-</code>&nbsp;&nbsp;&nbsp; Subtraction <br>
+<code>*</code>&nbsp;&nbsp;&nbsp; Multiplication <br>
+<code>/</code>&nbsp;&nbsp;&nbsp; Division</ul><p>
+
+Operands are:<p>
+
+<dd><code>variable specifications, functions, and constants</code>.<p>
+
+Operations are done on equivalent grid points in each grid. 
+Missing data values in either grid give a result of a missing
+data value at that grid point.  Dividing by zero gives a result
+of a missing data value at that grid point.<p>
+
+Operations cannot be done between grids that have different
+scaling in their varying dimensions -- i.e., grids that have
+different rules for converting the varying dimensions from grid
+space to world coordinate space.  This can only be encountered
+when you are attempting operations between grids from different
+files that have different scaling rules.<p>
+
+If one grid has more varying dimensions than the other, the grid
+with fewer varying dimensions     is 'expanded' and the operation
+is performed.<p>
+
+Some examples of expressions:<p>
+
+<ul>
+<code>z -
+z(t-1)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(Height change over
+time)<br>
+<code>t(lev=500)-t(lev=850)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(Temp change between 500
+and 850)<br>
+<code>ave(z,t=1,t=5)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(Average of z over first 5 times in file) <br>
+<code>z-ave(z,lon=0,lon=360,-b)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Remove zonal
+mean)<br>
+<code>tloop(aave(p,x=1,x=72,y=1,y=46))</code>&nbsp;&nbsp;&nbsp;   (Time series of
+globally
+averaged precip, on a 72x46 grid)</ul>
+
+

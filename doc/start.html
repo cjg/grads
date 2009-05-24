@@ -1,0 +1,97 @@
+<!--Copyright (C) 1988-2005 by the Institute of Global Environment and Society (IGES). See file COPYRIGHT for more information.-->
+
+<h1>Starting and Quitting GrADS</h1>
+
+GrADS is started by entering the command: <a
+href="gradcomdgrads.html"><code>grads</code></a><p>
+
+Before initialising the graphics output environment, GrADS will
+prompt for landscape or portrait mode.  Landscape is 11 x 8.5
+inches (usually what you want).  Portrait is 8.5 x 11 inches,
+primarily used for producing vertically oriented hardcopy output. 
+The actual size of the window will not, of course,  be 11 x 8.5
+inches (or 8.5 x 11 inches), but instead will be whatever size
+you chose by using your workstation's window manager.  But GrADS
+will treat the window as if it were one of the above sizes, so it
+is best to size the window with approximately the proper aspect
+ratio.  This can be done using the window manager or from GrADS
+using the command:<p>
+
+<dd><code>set xsize x y</code><p>
+
+which resizes the window to <code>x,y</code> pixels.<p>
+
+After answering this prompt, a separate graphics output window
+will be opened (but not on PCs). You may move or resize this
+window at any time.<p>
+
+You will enter GrADS commands in the text window from where you
+started GrADS.  Graphics output will appear in the graphics
+window in response to the commands you enter.  You will thus need
+to make the text window the "active" window; the window that
+receives keyboard input.<p>
+<br>
+<h2><u>Help</u></h2>
+
+Typing <code>help</code> at the GrADS command prompt gives a summary list of
+operations essential to do anything in GrADS.  This is intended
+to jog memory rather than provide an exhaustive help facility. If
+the GrADS manual is not available, you can obtain info on most
+command parameters by typing the command on its own. 
+Alternatively, we are setting up comprehensive documentation
+intended to be used as a local Web facility.<p>
+<br>
+<h2><u>Diagnostics at startup</u></h2>
+
+When you start GrADS you get platform specific diagnostics, for
+example:<p>
+
+<ul>
+<code>
+GX Package Initialization: Size = 11 8.5 <br>
+!!!! 32-bit BIG ENDIAN machine version <br>
+ga></code></ul><p>
+
+The <code>!!!!</code> line tells you that this version is <code>32-bit</code> 
+(i.e., data
+are 32-bit) and it was compiled for a <code>big endian</code> machine (the Sun
+in this case).  On the Cray you get...<p>
+
+<dd><code>!!!! 64-BIT MACHINE VERSION (CRAYS)</code><P>
+<br>
+<h2><u>Startup options</u></h2>
+
+You may specify the following options as arguments to the
+<a href="gradcomdgrads.html"><code>grads</code></a>
+command when GrADS is started:<p>
+
+<ul>
+<code>-b</code>&nbsp;&nbsp;&nbsp;    Run grads in batch mode.  No graphics output
+window is opened. <br>
+<code>-l</code>&nbsp;&nbsp;&nbsp;    Run grads in landscape mode.  The Portrait
+vs. Landscape question is not asked. <br>
+<code>-p</code>&nbsp;&nbsp;&nbsp;     Run grads in portrait mode. <br>
+<code>-c</code>&nbsp;&nbsp;&nbsp;
+Execute the supplied command as the 1 st  GrADS
+command after GrADS is started.</ul><p>
+
+An example:<p>
+
+<dd><code>grads -c "run profile.gs"</code><p>
+
+These options may be used in combinations.  For example:<p>
+
+<dd><code>grads -blc "run batch.gs"</code><p>
+
+Would run grads in batch mode, using landscape orientation (thus
+no questions are asked at startup); and execute the command:<p>
+
+<dd><code>batch.gs</code> upon startup.<p>
+<br>
+
+<h2><u>Leaving GrADS</u></h2>
+
+To leave GrADS, enter the command:<p>
+
+<dd><code>quit</code>
+

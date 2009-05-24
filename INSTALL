@@ -1,0 +1,53 @@
+	       GrADS - Grid Analysis and Display System
+			     Version 2.0
+
+                      http://grads.iges.org/grads
+
+                       GrADS Executables for UNIX
+
+GrADS is distributed freely and is copyrighted under the GNU Public License. 
+Please read the COPYRIGHT file for more complete information. 
+For download information consult http://grads.iges.org/grads/downloads.html
+
+The executables contained in this tar file are typically placed in the
+directory /usr/local/bin. If you do not have write permission for your
+/usr/local/bin directory, you can put them in the ~/bin subdirectory of your home
+directory.
+
+     cd /usr/local/bin
+     gunzip tarfile.gz
+     tar xvf tarfile
+
+After unpacking the first tar file, you should have the following executables:
+
+     grads            GrADS - The basic package
+     gradsdap         GrADS enabled to read data remotely via OPeNDAP
+     gribmap          Creates an index file that "maps" a GRIB data set for a GrADS descriptor file
+     gribscan         Extracts grid info from a GRIB data set
+     grib2scan        Extracts grid info from a GRIB2 data set
+     bufrscan         Reads BUFR messages and prints out ascii values 
+     gxps             Converts GrADS metafiles to Postscript
+     gxeps            Converts GrADS metafiles to Encapsulated Postscript
+     gxtran           Displays metafiles
+     stnmap           Maps station data
+     wgrib            See http://www.cpc.ncep.noaa.gov/products/wesley/wgrib.html
+
+A second tar file (data.tar.Z) contains the GrADS fonts and maps data sets is 
+also necessary and can be downloaded from http://grads.iges.org/grads/downloads.html.
+
+The contents of data.tar are typically placed in the directory
+/usr/local/lib/grads, the default location for these files. If you do not have
+write permission for /usr/local/lib/grads, you can place the files elsewhere, but
+you must also change the environment variable GADDIR so the GrADS executables will
+know where to find these files.
+
+     cd dirname
+     uncompress data.tar.Z
+     tar xvf data.tar
+     setenv GADDIR dirname (If dirname is not /usr/local/lib/grads)
+
+
+Documentation and Additional Information
+----------------------------------------
+
+Consult the GrADS homepage http://grads.iges.org/grads

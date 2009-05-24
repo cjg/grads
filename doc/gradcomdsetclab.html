@@ -1,0 +1,49 @@
+<!--Copyright (C) 1988-2005 by the Institute of Global Environment and Society (IGES). See file COPYRIGHT for more information.-->
+
+<html>
+<head>
+<title>GrADS Command: set clab</title>
+</head>
+<body bgcolor="e0f0ff" text="#000000">
+
+<h2><b>set clab</b></h2>
+
+<p>
+<code>set clab <i>option</i></code>
+
+<p>
+Controls contour labeling. The <code><i>option</i></code>
+argument may be one of the following:
+
+<ul>
+<code>on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+'fast' contour labels are plotted where the contour lines are horizontal <br>
+<code>off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+no contour labels <br>
+<code>forced&nbsp;&nbsp;&nbsp;</code>
+an attempt is made to label all contour lines <br>
+<code><i>format</i>&nbsp;&nbsp;&nbsp;</code>
+gives a C-language template for conversion of the contour value to a string <br>
+</ul>
+
+<p>
+<h3>Usage Notes</h3>
+<ol>
+<li>Changes to the contour labels are reset by <a
+href="gradcomdclear.html">clear</a>, but not <a
+href="gradcomddisplay.html">display</a>.
+</ol>
+
+<p>
+<h3>Examples </h3>
+<ol>
+<li>This command would cause all contour labels to have 2 digits after the decimal point:
+<ul><code>set clab %.2f </code></ul>
+<p>
+<li>For contouring temperatures, this command would add a degree symbol and the letter "C":
+<ul><code>set clab %.0f`3.`1C</ul>
+</ul>
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!--Copyright (C) 1988-2005 by the Institute of Global Environment and Society (IGES). See file COPYRIGHT for more information.-->
+
+<html>
+<head>
+<title>GrADS</title>
+<link href="GrADS.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="e0f0ff" text="#000000">
+
+<h2><b>sdfopen</b></h2>
+<p> <span class="plaintext"><code>sdfopen <i>filename &lt;template #timesteps&gt;</i></code></span>
+<p> 
+<p class="plaintext"> Opens a NetCDF or HDF-SDS format file that conforms to the 
+  COARDS conventions. The arguments and options are as follows: 
+<p> 
+<ul>
+  <span class="plaintext"><code><i>filename</i></code> </span> 
+  <ul>
+    <span class="plaintext"> The name of the COARDS-compliant NetCDF or HDF-SDS 
+    file. </span> 
+  </ul>
+  <span class="plaintext"><code><i>template</i></code> </span> 
+  <ul>
+    <span class="plaintext"> This optional argument is used when you want to aggregate 
+    multiple data files and handle them as if they were one individual file. The 
+    individual data files must be identical in all dimensions except time. <code><i>template</i></code> 
+    has a similar structure to the substitution template in a GrADS data descriptor 
+    file. See <a href="templates.html">Using Templates</a> for details. </span> 
+  </ul>
+  <span class="plaintext"><code><i>#timesteps</i></code> </span> 
+  <ul>
+    <span class="plaintext"> This argument must be included whenever <code><i>template</i></code> 
+    is invoked. The <code><i>#timesteps</i></code> is the sum of the timestep 
+    counts in all the files to be examined, not the count in any one file. </span> 
+  </ul>
+</ul>
+<p> 
+<h3>Usage Notes</h3>
+<ol>
+  <li><span class="plaintext">Any particular data file in the group described 
+    by the <code><i>template</i></code> is automatically accessed as the "time" 
+    or "t" settings in GrADS are altered. </span> 
+    <p> 
+  <li><span class="plaintext">Use <a href="gradcomdxdfopen.html"><code>xdfopen</code></a> 
+    to open a non-COARDS-compliant self-describing file. </span> 
+    <p> 
+  <li class="plaintext">For additional information, see <a href="http://www.cdc.noaa.gov/~hoop/grads.html"> 
+    The Self-Describing Files (SDF) Interface</a>. 
+</ol>
+
+<p>
+<h3>Examples </h3>
+<ol>
+  <li class="plaintext">If you had daily U-Wind data in two files, <code>uwnd.1989.nc</code> 
+    and <code>uwnd.1990.nc</code>, you could access them both as one GrADS data 
+    set by entering: 
+    <p>
+<code>sdfopen /data/uwnd.1989.nc uwnd.%y4.nc 730</code>
+<p>
+</ol>
+
+</body>
+</html>
+

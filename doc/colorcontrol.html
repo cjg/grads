@@ -1,0 +1,287 @@
+<!--Copyright (C) 1988-2005 by the Institute of Global Environment and Society (IGES). See file COPYRIGHT for more information.-->
+
+<html>
+<head>
+<title>Controlling Colors in GrADS</title>
+</head>
+<body bgcolor="e0f0ff" text="#000000">
+
+<h2><b>Controlling Colors in GrADS</b></h2>
+<p>
+<font size=+1><b><i>The GrADS Default Colors</i></b></font>
+<p>
+GrADS is built with 16 default colors that are used in a variety of
+applications. Every color in GrADS has a unique <i>color number</i> that is used
+as an index to identify it in GrADS commands. Complete specifications
+of the default colors numbered 0 to 15 are given below:
+
+<p>
+<pre>
+Col#  Description   Sample    R   G   B 
+<br>
+  0   background    <img src="images/dot_b.gif"  width=50 height=12>   0   0   0  (black by default)<br>
+  1   foreground    <img src="images/dot_w.gif"  width=50 height=12> 255 255 255  (white by default)<br>
+  2   red           <img src="images/dot_2.gif"  width=50 height=12> 250  60  60  <br>
+  3   green         <img src="images/dot_3.gif"  width=50 height=12>   0 220   0  <br>
+  4   dark blue     <img src="images/dot_4.gif"  width=50 height=12>  30  60 255  <br>
+  5   light blue    <img src="images/dot_5.gif"  width=50 height=12>   0 200 200  <br>
+  6   magenta       <img src="images/dot_6.gif"  width=50 height=12> 240   0 130  <br>
+  7   yellow        <img src="images/dot_7.gif"  width=50 height=12> 230 220  50  <br>
+  8   orange        <img src="images/dot_8.gif"  width=50 height=12> 240 130  40  <br>
+  9   purple        <img src="images/dot_9.gif"  width=50 height=12> 160   0 200  <br>
+ 10   yellow/green  <img src="images/dot_10.gif" width=50 height=12> 160 230  50  <br>
+ 11   medium blue   <img src="images/dot_11.gif" width=50 height=12>   0 160 255  <br>
+ 12   dark yellow   <img src="images/dot_12.gif" width=50 height=12> 230 175  45  <br>
+ 13   aqua          <img src="images/dot_13.gif" width=50 height=12>   0 210 140  <br>
+ 14   dark purple   <img src="images/dot_14.gif" width=50 height=12> 130   0 220  <br>
+ 15   gray          <img src="images/dot_15.gif" width=50 height=12> 170 170 170  <br>
+</pre>
+<font size=-1>Disclaimer: The color samples may not be displayed properly.</font>
+
+<p>
+<font size=+1><b><i>The GrADS Default Rainbow Sequence</i></b></font>
+<p>
+GrADS creates a default rainbow palette using the following sequence of 13 built-in colors: 
+<table>
+<tr align=center>
+<td>9</td> 
+<td>14</td>
+<td>4</td>
+<td>11</td>
+<td>5</td>
+<td>13</td>
+<td>3</td>
+<td>10</td>
+<td>7</td>
+<td>12</td>
+<td>8</td>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr>
+    <td><img src="images/dot_9.gif"  width=45 height=12></td>
+    <td><img src="images/dot_14.gif" width=45 height=12></td>
+    <td><img src="images/dot_4.gif"  width=45 height=12></td>
+    <td><img src="images/dot_11.gif" width=45 height=12></td>
+    <td><img src="images/dot_5.gif"  width=45 height=12></td>
+    <td><img src="images/dot_13.gif" width=45 height=12></td>
+    <td><img src="images/dot_3.gif"  width=45 height=12></td>
+    <td><img src="images/dot_10.gif" width=45 height=12></td>
+    <td><img src="images/dot_7.gif"  width=45 height=12></td>
+    <td><img src="images/dot_12.gif" width=45 height=12></td>
+    <td><img src="images/dot_8.gif"  width=45 height=12></td>
+    <td><img src="images/dot_2.gif"  width=45 height=12></td>
+    <td><img src="images/dot_6.gif"  width=45 height=12></td>
+</tr>
+</table>
+<p>
+When drawing contour plots, the default behaviour of GrADS is to color
+code the contours and select an appropriate contour interval so that
+each contour is a different color and the colors span the range of the
+default rainbow sequence. The same principle is behind the selection
+of default contour intervals for filled contours and shaded grid
+plots. 
+
+<p>
+The scripts <code>"cbar.gs"</code> and <code>"cbarn.gs"</code> will
+draw a color key alongside a plot of filled contours or shaded grid
+cells; the script uses the <a href="gradcomdquery.html"><code>query
+shades</code></a> command to get information about the contour levels
+and their color shades.
+
+<p>
+<font size=+1><b><i>Defining new colors</i></b></font>
+
+<p>
+For some types of displays, the 16 GrADS default colors may not be
+suitable or adequate. It is possible for the user to define new colors
+using the <a href="gradcomdsetrgb.html"><code>set rgb</code></a> command:
+
+<p>
+<ul>
+<code><a href="gradcomdsetrgb.html">set rgb</a> <i>color# R G B</i></code>
+</ul>
+
+<p>
+For example, let's create a palette of colors for
+plotting anomalies. We need to define new colors that will be shades
+of blue and red that range in intensity from fully saturated to very
+light. White will be the color in the center of the new anomaly
+palette.
+
+<p>
+<ul>
+<pre>
+* These are the BLUE shades
+<a href="gradcomdsetrgb.html">set rgb</a> 16   0   0 255
+<a href="gradcomdsetrgb.html">set rgb</a> 17  55  55 255
+<a href="gradcomdsetrgb.html">set rgb</a> 18 110 110 255
+<a href="gradcomdsetrgb.html">set rgb</a> 19 165 165 255
+<a href="gradcomdsetrgb.html">set rgb</a> 20 220 220 255
+* These are the RED shades
+<a href="gradcomdsetrgb.html">set rgb</a> 21 255 220 220
+<a href="gradcomdsetrgb.html">set rgb</a> 22 255 165 165
+<a href="gradcomdsetrgb.html">set rgb</a> 23 255 110 110
+<a href="gradcomdsetrgb.html">set rgb</a> 24 255  55  55
+<a href="gradcomdsetrgb.html">set rgb</a> 25 255   0   0
+</pre>
+</ul>
+
+
+
+<p>
+<font size=+1><b><i>Overriding the Defaults</i></b></font>
+
+<p>
+Now that we have a set of newly defined colors (numbered 16-25), we
+can override the defaults and specify our anomaly palette with exact
+contour levels and the colors that go with them. This is accomplished
+by using the following commands:
+
+<p>
+<ul>
+<code>
+<a href="gradcomdsetclevs.html">set clevs</a> <i>lev1 lev2 lev3 ... levN</i><br>
+<a href="gradcomdsetccols.html">set ccols</a> <i>col1 col2 col3 ... colN</i><br>
+</code>
+</ul>
+
+<p>
+Contour levels and the colors that go with them are reset with every
+execution of <a href="gradcomdclear.html"><code>clear</code></a> or 
+<a href="gradcomddisplay.html"><code>display</code></a>. Thus, it may be
+easier to use these commands in a script to avoid typing them over and
+over again.
+
+<p>
+<b><i>Filled Contours or Shaded Grids:</i></b> If you are specifying
+the levels and colors for filled contours (<code><a
+href="gradcomdsetgxout.html">set gxout</a> shaded</code>) or shaded
+grid cells (<code><a href="gradcomdsetgxout.html">set gxout</a>
+grfill</code>), then the number of colors specified with <a
+href="gradcomdsetccols.html">set ccols</a> must be one larger than the
+number of contour levels specified with <a
+href="gradcomdsetclevs.html">set clevs</a>. Continuing with our
+example of creating an anomaly palette, the commands would have the
+following syntax:
+
+<p>
+<ul>
+<code>
+<a href="gradcomdsetgxout.html">set gxout</a> shaded<br>
+<a href="gradcomdsetclevs.html">set clevs</a> -5 -4 -3 -2 -1 1 2 3 4 5<br>
+<a href="gradcomdsetccols.html">set ccols</a> 16 17 18 19 20 1 21 22 23 24 25<br>
+</code>
+</ul>
+
+<p>
+Note the "0" contour level has been omitted, but color number "1" is still in
+the palette. Drawing a plot with these specified <code>clevs</code>
+and <code>ccols</code> and then running the "cbarn.gs" script will
+result in the following color key:
+<p>
+<img src="key.gif">
+<p>
+Here is example using 6 colors and 5 contour levels that shows how the
+filled contours (or shaded grids) relate to the data values:
+<p>
+<ul>
+<pre>
+col1:         values <= lev1
+col2:  lev1 < values <= lev2
+col3:  lev2 < values <= lev3
+col4:  lev3 < values <= lev4
+col5:  lev4 < values <= lev5
+col6:  lev5 < values
+</pre>
+</ul>
+
+<p>
+<b><i>Line Contours:</i></b> If you are specifying the levels and
+colors for line contours (<code><a href="gradcomdsetgxout.html">set
+gxout</a> contour</code>), then the number of arguments to <a
+href="gradcomdsetclevs.html">set clevs</a> and <a
+href="gradcomdsetccols.html">set ccols</a> should be equal -- one
+color for each contour.
+
+<p>
+<font size=+1><b><i>Plotting Contours of Constant Color</i></b></font>
+
+<p>
+It is sometimes preferable to plot line contours without the rainbow
+coloring. An example might be a plot with sea level pressure contours
+in one color (red) and 500 mb height contours overlaid in another
+color (blue).  For drawing all the contours in the same color, use the
+<a href="gradcomdsetccolor.html"><code>set ccolor</code></a> command:
+
+<p>
+<ul>
+<code>
+<a href="gradcomdsetgxout.html">set gxout</a> contour <br>
+<a href="gradcomdsetccolor.html">set ccolor</a> 2 <br>
+<a href="gradcomddisplay.html">d</a> slp <br>
+<a href="gradcomdsetccolor.html">set ccolor</a> 4 <br>
+<a href="gradcomddisplay.html">d</a> z(lev=500) <br>
+</code>
+</ul>
+
+<p>
+<font size=+1><b><i>Omitting Colors</i></b></font>
+
+<p>
+The default behavior of GrADS when plotting filled contours or shaded
+grid cells is to colorize all areas. To omit a particular color (or
+contour level) from the plot, simply assign the background color. For
+example:
+
+<p>
+<ul>
+<code>
+<a href="gradcomdsetgxout.html">set gxout</a> shaded<br>
+<a href="gradcomdsetclevs.html">set clevs</a> -5 -4 -3 -2 -1 1 2 3 4 5<br>
+<a href="gradcomdsetccols.html">set ccols</a> 0 17 18 19 20 0 21 22 23 24 0<br>
+</code>
+</ul>
+
+<p>
+This example is similar to the one given above, but notice where some
+of the <code>ccols</code> have been set to "0" (the background
+color). The first, last, and middle colors have been omitted. These
+commands set up a plot that will only shade areas where the anomalies
+are between 1 and 5 and -1 and -5. The remaining areas will be black.
+
+
+<p>
+<font size=+1><b><i>Plotting Non-Continuous Index Grids </i></b></font>
+
+<p>
+Plotting grids with index values or non-continuous data (e.g. surface
+type classification) is simplified by using the graphics output type
+<code>fgrid</code> and the <a href="gradcomdsetfgvals.html"><code>set
+fgvals</code></a> command.
+
+<p>
+<ul>
+<code>
+<a href="gradcomdsetgxout.html">set gxout</a> fgrid <br>
+<a href="gradcomdsetfgvals.html">set fgvals</a> 1 15 2 5 3 1 <br>
+<a href="gradcomddisplay.html">d</a> sfctype <br>
+</code>
+</ul>
+
+<p>
+In this example, the variable <code>"sfctype"</code> has three values:
+<code>1</code> represents land, <code>2</code> represents oceans, and
+<code>3</code> represents sea ice. These commands would draw a plot
+with land grid cells filled with color number 15 (gray), ocean grid
+cells filled with color number 5 (light blue), and sea ice grid cells
+filled with color number 1 (white). If the first two arguments to <a
+href="gradcomdsetfgvals.html">set fgvals</a> were omitted, then the
+land grid cells would not be omitted and only ocean and sea ice grid
+cells would be colored.
+
+
+
+</body>
+</html>
+
