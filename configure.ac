@@ -108,6 +108,7 @@ dnl    guilibadd="-lSM -lICE"
   *-pc-cygwin)
 	AC_CHECK_LIB(rpclib,svc_register,, AC_MSG_ERROR([Fatal: Sun RPC library not found]))
 	host_ldadd="-lrpclib"
+	exe_ext=".exe"
     AC_SUBST(host_ldadd)
     if test "$with_xlibemu" != "no" ; then
       echo "Check for X emulation libraries..."
@@ -450,7 +451,7 @@ if test "$use_printim" != "yes" ; then
   AC_DEFINE(GXPNG, 0, [Enable printim using zlib, libpng, and libgd])
   echo "- printim disabled (Warning: gxtran will not be built)" 
 else
-  extra_utils="$extra_utils gxtran"
+  extra_utils="$extra_utils gxtran$exe_ext"
   AC_SUBST(printim_inc)
   AC_SUBST(printim_libs)
   AC_DEFINE(GXPNG, 1, [Enable printim using zlib, libpng, and libgd])
@@ -513,7 +514,7 @@ if test "$have_grib2" != "yes" ; then
   AC_DEFINE(GRIB2, 0, [Enable grib2])
   echo "- grib2 disabled " 
 else
-  extra_utils="$extra_utils grib2scan"
+  extra_utils="$extra_utils grib2scan$exe_ext"
   AC_SUBST(grib2_inc)
   AC_SUBST(grib2_libs)
   AC_DEFINE(GRIB2, 1, [Enable grib2])
@@ -730,7 +731,7 @@ else
     fi
   fi
   if test $use_dap = "yes" ; then
-    extra_bins="$extra_bins gradsdap"
+    extra_bins="$extra_bins gradsdap$exe_ext"
     if test $use_gadap = "yes" ; then	
       gadap_def="-DUSEGADAP=1"
       echo "+ gradsdap build enabled -- OPeNDAP interface for gridded and station data"

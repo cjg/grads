@@ -4240,6 +4240,7 @@ $as_echo "$as_me: error: Fatal: Sun RPC library not found" >&2;}
 fi
 
 	host_ldadd="-lrpclib"
+	exe_ext=".exe"
 
     if test "$with_xlibemu" != "no" ; then
       echo "Check for X emulation libraries..."
@@ -12978,7 +12979,7 @@ _ACEOF
 
   echo "- printim disabled (Warning: gxtran will not be built)"
 else
-  extra_utils="$extra_utils gxtran"
+  extra_utils="$extra_utils gxtran$exe_ext"
 
 
 
@@ -14075,7 +14076,7 @@ _ACEOF
 
   echo "- grib2 disabled "
 else
-  extra_utils="$extra_utils grib2scan"
+  extra_utils="$extra_utils grib2scan$(EXEEXT)"
 
 
 
@@ -21242,7 +21243,7 @@ fi
     fi
   fi
   if test $use_dap = "yes" ; then
-    extra_bins="$extra_bins gradsdap"
+    extra_bins="$extra_bins gradsdap$(EXEEXT)"
     if test $use_gadap = "yes" ; then
       gadap_def="-DUSEGADAP=1"
       echo "+ gradsdap build enabled -- OPeNDAP interface for gridded and station data"
