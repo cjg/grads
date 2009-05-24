@@ -106,7 +106,8 @@ dnl    guilibadd="-lSM -lICE"
   ;;
 
   *-pc-cygwin)
-    host_ldadd="-lrpclib"
+	AC_CHECK_LIB(rpclib,svc_register,, AC_MSG_ERROR([Fatal: Sun RPC library not found]))
+	host_ldadd="-lrpclib"
     AC_SUBST(host_ldadd)
     if test "$with_xlibemu" != "no" ; then
       echo "Check for X emulation libraries..."
