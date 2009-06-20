@@ -1516,7 +1516,7 @@ gaint i,j;
   ch = in2;
   pos=NULL;
   while (*ch!='\0' && *ch!=' ' && *ch!='\n') {
-    if (*ch=='/') pos=ch;
+    if (*ch=='/' || *ch=='\\') pos=ch;
     ch++;
   }
   if (pos) pos++;
